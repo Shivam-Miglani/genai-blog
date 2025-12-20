@@ -8,3 +8,8 @@ website:
   # Important for project sites:
   navbar:
     search: true
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
