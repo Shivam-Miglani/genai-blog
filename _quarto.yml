@@ -1,0 +1,10 @@
+project:
+  type: website
+  output-dir: _site  # Standard output directory
+
+website:
+  title: "GenAI Engineering"
+  site-url: "https://Shivam-Miglani.github.io/genai-blog/"
+  # Important for project sites:
+  navbar:
+    search: true
