@@ -3,20 +3,20 @@ project:
   output-dir: _site
 
 website:
-  title: "GenAI Engineering" # This appears in the top-left
+  title: "GenAI Engineering"
   site-url: "https://Shivam-Miglani.github.io/genai-blog/"
   navbar:
     search: true
-    background: primary      # We will override "primary" to be black/white below
-    foreground: primary      # Text color
+    background: primary
+    foreground: primary
 
 format:
   html:
     theme:
-      light: [cosmo, minimalist.scss]  # Clean sans-serif light
-      dark: [slate, minimalist.scss]   # Clean sans-serif dark
-    css: styles.css                    # Fixes the "weird" spacing
-    mainfont: "Inter"                  # Modern, clean font (or use "Roboto")
+      light: [cosmo, light.scss]
+      dark: [slate, dark.scss]
+    css: styles.css
+    mainfont: "Inter"
     code-copy: true
 
 execute:

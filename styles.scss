@@ -1,18 +1,16 @@
-/* Remove the border line under the navbar */
+/* Hide navbar borders/shadows */
 .navbar {
     border-bottom: none !important;
     box-shadow: none !important;
 }
 
-/* Fix the Double Title Issue */
-/* This hides the "genai-blog" text on the listing page if it's redundant */
+/* Fix double titles */
 #quarto-content .quarto-title-block .title {
     display: none;
 }
 
-/* Give the content more breathing room (Minimalist style) */
+/* Center and narrow content */
 main {
     max-width: 800px;
-    /* Bear blogs are usually narrow */
     margin: 0 auto;
 }
