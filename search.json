@@ -2,30 +2,23 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Full Stack GenAI",
     "section": "",
-    "text": "About this blog"
-  },
-  {
-    "objectID": "posts/post-with-code/post1.html",
-    "href": "posts/post-with-code/post1.html",
-    "title": "GenAI Engineering",
-    "section": "",
-    "text": "import pandas as pd"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "GenAI Engineering",
-    "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nDec 20, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nDec 17, 2025\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "Hi, I am Shivam Miglani\nI build AI/ML systems and ship them to production.\nGenAI today feels like early deep learning: raw potential hitting the messy reality of deployment. The challenge isn’t “can an LLM do this?” but “can we make it reliable, observable, and affordable at scale?” That’s where I operate.\nThis is my learning space—intuition and code-first.\n\n\nWhat I Write About\nThis blog is my scratchpad for full-stack GenAI engineering, focused on:\n\nLLMs & Prompting: Making them work in production without breaking the bank\nRAG Systems: Patterns that actually work, not just demo well\nEvals: Measuring if your AI system is actually good\nAgents: Composable intelligence blocks, not magic wizards\nPapers & Case Studies: What research looks like when you implement it\n\n\n\nWhy This Space?\nI believe the best way to learn is to strip away the abstractions and build things from first principles. I hope the intuitions I write about are useful to you.\n\n\nConnect"
   },
   {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "This is a post with static code and saved outputs.\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Create a sample dataset\ndata = pd.DataFrame({\n    'x': np.random.rand(100),\n    'y': np.random.rand(100)\n})\n\n# Create a scatter plot\nplt.scatter(data['x'], data['y'])\nplt.title('Scatter Plot')\nplt.xlabel('X')\nplt.ylabel('Y')\nplt.show()"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Full Stack GenAI",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\n\n\nDec 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\nDec 17, 2025\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html",

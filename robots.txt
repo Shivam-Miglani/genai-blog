@@ -1,1 +1,1 @@
-Sitemap: https://Shivam-Miglani.github.io/genai-blog/sitemap.xml
+Sitemap: https://shivam-miglani.github.io/genai-blog/sitemap.xml
