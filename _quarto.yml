@@ -11,7 +11,7 @@ website:
 format:
   html:
     respect-user-color-scheme: true
-    theme: yeti
+    theme: cyborg
     code-copy: true
     code-overflow: wrap
 
