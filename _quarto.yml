@@ -11,7 +11,7 @@ website:
     center: "[About](/about.html) · © 2025 Shivam Miglani"
 
 execute:
-  freeze: auto
+  freeze: true
 
 format:
   html:
