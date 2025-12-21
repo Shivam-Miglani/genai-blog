@@ -1,7 +1,6 @@
 # Quarto
 /.quarto/
 _site/
-_freeze
 **/*.quarto_ipynb
 about_files
 index_files

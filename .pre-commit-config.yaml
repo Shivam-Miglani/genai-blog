@@ -1,3 +1,5 @@
+exclude: '^(_freeze/|.*\.qmd\.json)'  # Ignores the entire freeze folder and related JSONs
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
