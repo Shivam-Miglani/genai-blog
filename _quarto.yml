@@ -8,9 +8,12 @@ website:
   navbar:
     search: true
 
+filters:
+  - auto-dark
+
 format:
   html:
-    theme: lux
+    theme: yeti
     code-copy: true
     code-overflow: wrap
 
