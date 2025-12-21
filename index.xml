@@ -10,12 +10,13 @@
 <atom:link href="https://Shivam-Miglani.github.io/genai-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Fri, 19 Dec 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 20 Dec 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Post With Code</title>
   <dc:creator>Harlow Malloc</dc:creator>
   <link>https://Shivam-Miglani.github.io/genai-blog/posts/post-with-code/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -30,7 +31,7 @@
   <category>code</category>
   <category>analysis</category>
   <guid>https://Shivam-Miglani.github.io/genai-blog/posts/post-with-code/</guid>
-  <pubDate>Fri, 19 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 20 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://Shivam-Miglani.github.io/genai-blog/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -38,6 +39,7 @@
   <dc:creator>Tristan O&#39;Malley</dc:creator>
   <link>https://Shivam-Miglani.github.io/genai-blog/posts/welcome/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -52,7 +54,7 @@
  ]]></description>
   <category>news</category>
   <guid>https://Shivam-Miglani.github.io/genai-blog/posts/welcome/</guid>
-  <pubDate>Tue, 16 Dec 2025 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 17 Dec 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
