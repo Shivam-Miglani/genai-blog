@@ -10,7 +10,7 @@ website:
 
 format:
   html:
-    theme: darkly
+    theme: lux
     code-copy: true
     code-overflow: wrap
 
