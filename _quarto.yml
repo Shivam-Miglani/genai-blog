@@ -3,21 +3,35 @@ project:
   output-dir: _site
 
 website:
-  title: "GenAI Engineering"
-  site-url: "https://Shivam-Miglani.github.io/genai-blog/"
+  title: "Full Stack GenAI"
+  site-url: "https://shivam-miglani.github.io/genai-blog/"
   navbar:
     search: true
-    background: primary
-    foreground: primary
+  page-footer:
+    center: "[About](/about.html) · © 2025 Shivam Miglani"
+
+execute:
+  freeze: auto
 
 format:
   html:
     theme:
-      light: [cosmo, light.scss]
-      dark: [slate, dark.scss]
-    css: styles.css
-    mainfont: "Inter"
+      light: [flatly, light.scss]
+      dark: [darkly, dark.scss]
+    toc: false
     code-copy: true
-
-execute:
-  freeze: true
+    code-overflow: wrap
+    main-font: system-ui
+    grid:
+      body-width: 720px
+      gutter-width: 1.5rem
+    include-in-header:
+    - text: |
+        <style>
+        #quarto-header nav.navbar > .container-fluid{
+          padding-left: .75rem;
+          padding-right: .75rem;
+          max-width: calc(720px + 1.5rem);
+          margin: 0 auto;
+        }
+        </style>

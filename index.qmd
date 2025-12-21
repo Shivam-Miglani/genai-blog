@@ -1,8 +1,11 @@
 ---
-title: ""  # Leave empty if you want no big title
+title: ""
 listing:
   contents: posts
   sort: "date desc"
-  type: default
-  categories: true
+  categories: false
+  feed: true
+format:
+  html:
+    toc: false
 ---

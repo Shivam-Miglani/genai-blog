@@ -1,23 +1,12 @@
 /*-- scss:defaults --*/
 
-// Backgrounds & Text
-$body-bg: #ffffff;
-$body-color: #000000;
-
-// Navbar blending (White on White)
+// white navbar
 $navbar-bg: #ffffff;
 $navbar-fg: #000000;
 
-// Force all accents to Black
+// Force primary color to black (removes blue from links/buttons)
 $primary: #000000;
-$secondary: #000000;
-$success: #000000;
-$info: #000000;
-$warning: #000000;
-$danger: #000000;
 $link-color: #000000;
 
-// Remove rounded corners
-$border-radius: 0;
-$border-radius-sm: 0;
-$border-radius-lg: 0;
+// Remove border under navbar
+$navbar-border-bottom: none;
