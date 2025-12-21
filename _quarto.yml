@@ -1,15 +1,18 @@
 project:
   type: website
-  output-dir: _site  # Standard output directory
+  output-dir: _site
 
 website:
   title: "GenAI Engineering"
   site-url: "https://Shivam-Miglani.github.io/genai-blog/"
-  # Important for project sites:
   navbar:
     search: true
 
 format:
   html:
-    theme:
-      dark: darkly
+    theme: darkly
+    code-copy: true
+    code-overflow: wrap
+
+execute:
+  freeze: auto
