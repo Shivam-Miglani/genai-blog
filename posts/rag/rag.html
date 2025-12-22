@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tristan O’Malley">
-<meta name="dcterms.date" content="2025-12-17">
+<meta name="author" content="Shivam Miglani">
+<meta name="dcterms.date" content="2025-12-22">
 
-<title>Welcome To My Blog – Full Stack GenAI</title>
+<title>Retrieval Augmented Generation Fundamentals – My Context Window</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fbe6e2381d14da838ef765665268c4c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-1ef4c04c8eeb62af03e338041bee40cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-fbe6e2381d14da838ef765665268c4c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7a99a122b4ecca73bededa548e06e012.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-29a33d4b1dd7dd3d06f33acd9a0a2652.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-7a99a122b4ecca73bededa548e06e012.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -256,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Full Stack GenAI</span>
+    <span class="navbar-title">My Context Window</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
@@ -277,9 +277,9 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome To My Blog</h1>
+<h1 class="title">Retrieval Augmented Generation Fundamentals</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">news</div>
+    <div class="quarto-category">RAG</div>
   </div>
   </div>
 
@@ -290,14 +290,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Tristan O’Malley </p>
+             <p>Shivam Miglani </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 17, 2025</p>
+      <p class="date">December 22, 2025</p>
     </div>
   </div>
   
@@ -309,13 +309,64 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Licensing Notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Text and media: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><br>
+Code and snippets: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+</div>
+</div>
+<section id="rag-fundamentals" class="level1">
+<h1>RAG Fundamentals</h1>
+<p><strong>R</strong>etrieval <strong>A</strong>ugmented <strong>G</strong>eneration</p>
 
 
+</section>
 
 </main> <!-- /main -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.location.pathname.includes("/posts/")) {
+            var repoUrl = "https://github.com/shivam-miglani/genai-blog/blob/main";
+            var path = window.location.pathname;
+
+            // Remove deployment path prefix (e.g. /genai-blog/) if present
+            // We assume the structure is .../posts/...
+            var parts = path.split("/posts/");
+            if (parts.length > 1) {
+                var relativePath = parts[1];
+
+                if (relativePath.endsWith("/") || relativePath === "") {
+                    relativePath += "index.qmd";
+                } else if (relativePath.endsWith(".html")) {
+                    relativePath = relativePath.replace(".html", ".qmd");
+                }
+
+                var gitHubUrl = repoUrl + "/posts/" + relativePath;
+
+                var footer = document.createElement("div");
+                footer.style.marginTop = "3rem";
+                footer.style.paddingTop = "1rem";
+                footer.style.borderTop = "1px solid #e9ecef";
+                footer.style.textAlign = "center";
+                footer.style.fontSize = "0.8em";
+                footer.innerHTML = "<a href='" + gitHubUrl + "' target='_blank' style='color: inherit; text-decoration: none; font-weight: bold;'>View source on <i class='bi bi-github'></i></a>";
+
+                var main = document.querySelector("main");
+                if (main) {
+                    main.appendChild(footer);
+                }
+            }
+        }
+    });
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -733,14 +784,14 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
 <p><a href="../../about.html">About</a> · © 2025 Shivam Miglani</p>
-</div>
-    <div class="nav-footer-right">
+</div>   
+    <div class="nav-footer-center">
       &nbsp;
     </div>
+    <div class="nav-footer-right">
+<p>Licensed under <a href="LICENSE.md">CC BY 4.0</a> &amp; <a href="LICENSE.md">Apache 2.0</a></p>
+</div>
   </div>
 </footer>
 

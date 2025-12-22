@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shivam-miglani.github.io/genai-blog/about.html</loc>
-    <lastmod>2025-12-21T23:41:48.994Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shivam-miglani.github.io/genai-blog/posts/post-with-code/index.html</loc>
-    <lastmod>2025-12-21T23:41:48.994Z</lastmod>
+    <lastmod>2025-12-22T20:00:29.177Z</lastmod>
   </url>
   <url>
     <loc>https://shivam-miglani.github.io/genai-blog/index.html</loc>
-    <lastmod>2025-12-21T23:41:48.994Z</lastmod>
+    <lastmod>2025-12-22T20:00:29.204Z</lastmod>
   </url>
   <url>
-    <loc>https://shivam-miglani.github.io/genai-blog/posts/welcome/index.html</loc>
-    <lastmod>2025-12-21T23:41:48.994Z</lastmod>
+    <loc>https://shivam-miglani.github.io/genai-blog/LICENSE.html</loc>
+    <lastmod>2025-12-22T20:00:29.170Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shivam-miglani.github.io/genai-blog/posts/rag/rag.html</loc>
+    <lastmod>2025-12-22T20:00:29.204Z</lastmod>
   </url>
 </urlset>
