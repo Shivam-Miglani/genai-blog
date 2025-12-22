@@ -5,13 +5,22 @@ $font-family-sans-serif: 'Inter', sans-serif;
 $font-size-base: 0.95rem;
 $code-font-size: 0.85em;
 
+$headings-font-family: 'Inter', sans-serif;
+$headings-font-weight: 500;
+$h1-font-size: 1.75rem;
+$h2-font-size: 1.4rem;
+$h3-font-size: 1.2rem;
+
+// Softer heading colors
+$headings-color: #e9ecef;
+
 // navbar make it black
 $navbar-bg: #000000;
 $navbar-fg: #ffffff;
 
 // Force primary color to white
 $primary: #ffffff;
-$link-color: #ffffff;
+$link-color: #58a6ff;
 
 // Remove border under navbar
 $navbar-border-bottom: none;

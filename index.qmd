@@ -1,5 +1,6 @@
 ---
-title: "Full Stack GenAI by Shivam Miglani"
+title: ""
+toc: false
 listing:
   contents: posts
   sort: "date desc"
@@ -12,4 +13,8 @@ listing:
 format:
   html:
     toc: false
+---
+
+Hi, I'm Shivam Miglani. Welcome to my context window. Here I document my journey through the Generative AI landscape, from foundational concepts to production engineering.
+
 ---

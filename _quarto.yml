@@ -9,8 +9,7 @@ website:
   navbar:
     search: true
   page-footer:
-    left: "[About](/about.html) · © {{< meta copyright.year >}} {{< meta copyright.holder >}}"
-    right: "Licensed under [CC BY 4.0](LICENSE.md) & [Apache 2.0](LICENSE.md)"
+    center: "[About](/about.html) · © {{< meta copyright.year >}} {{< meta copyright.holder >}}"
 
 copyright:
   holder: "Shivam Miglani"
