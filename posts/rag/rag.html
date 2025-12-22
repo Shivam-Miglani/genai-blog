@@ -346,7 +346,7 @@ Code and snippets: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache L
                 if (relativePath.endsWith("/") || relativePath === "") {
                     relativePath += "index.qmd";
                 } else if (relativePath.endsWith(".html")) {
-                    relativePath = relativePath.replace(".html", ".qmd");
+                    relativePath = relativePath.replace(".html", ".ipynb");
                 }
 
                 var gitHubUrl = repoUrl + "/posts/" + relativePath;
