@@ -1,0 +1,36 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.location.pathname.includes("/posts/")) {
+            var repoUrl = "https://github.com/shivam-miglani/genai-blog/blob/main";
+            var path = window.location.pathname;
+
+            // Remove deployment path prefix (e.g. /genai-blog/) if present
+            // We assume the structure is .../posts/...
+            var parts = path.split("/posts/");
+            if (parts.length > 1) {
+                var relativePath = parts[1];
+
+                if (relativePath.endsWith("/") || relativePath === "") {
+                    relativePath += "index.qmd";
+                } else if (relativePath.endsWith(".html")) {
+                    relativePath = relativePath.replace(".html", ".qmd");
+                }
+
+                var gitHubUrl = repoUrl + "/posts/" + relativePath;
+
+                var footer = document.createElement("div");
+                footer.style.marginTop = "3rem";
+                footer.style.paddingTop = "1rem";
+                footer.style.borderTop = "1px solid #e9ecef";
+                footer.style.textAlign = "center";
+                footer.style.fontSize = "0.8em";
+                footer.innerHTML = "<a href='" + gitHubUrl + "' target='_blank' style='color: inherit; text-decoration: none; font-weight: bold;'>View source on <i class='bi bi-github'></i></a>";
+
+                var main = document.querySelector("main");
+                if (main) {
+                    main.appendChild(footer);
+                }
+            }
+        }
+    });
+</script>

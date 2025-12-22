@@ -1,14 +1,20 @@
 project:
   type: website
   output-dir: _site
+  pre-render: add_license.py
 
 website:
-  title: "Full Stack GenAI"
+  title: "My Context Window"
   site-url: "https://shivam-miglani.github.io/genai-blog/"
   navbar:
     search: true
   page-footer:
-    center: "[About](/about.html) · © 2025 Shivam Miglani"
+    left: "[About](/about.html) · © {{< meta copyright.year >}} {{< meta copyright.holder >}}"
+    right: "Licensed under [CC BY 4.0](LICENSE.md) & [Apache 2.0](LICENSE.md)"
+
+copyright:
+  holder: "Shivam Miglani"
+  year: 2025
 
 execute:
   freeze: true
@@ -36,3 +42,4 @@ format:
           margin: 0 auto;
         }
         </style>
+    include-after-body: notebook-footer.html

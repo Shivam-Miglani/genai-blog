@@ -1,9 +1,13 @@
 ---
-title: ""
+title: "Full Stack GenAI by Shivam Miglani"
 listing:
   contents: posts
   sort: "date desc"
+  type: table
+  fields: [date, title]
   categories: false
+  sort-ui: false
+  filter-ui: false
   feed: true
 format:
   html:
