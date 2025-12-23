@@ -27,3 +27,54 @@ $navbar-border-bottom: none;
 
 // body background
 $body-bg: #000000;
+$body-color: #ffffff;
+$secondary: #888888;
+
+// Mermaid diagram theming (Quarto/Bootswatch variables)
+$mermaid-bg-color: $body-bg;
+$mermaid-edge-color: #888888;
+$mermaid-node-fg-color: #ffffff;
+$mermaid-fg-color: #ffffff;
+$mermaid-fg-color--lighter: #cccccc;
+$mermaid-fg-color--lightest: #999999;
+$mermaid-font-family: 'Inter', sans-serif;
+$mermaid-label-bg-color: $body-bg; // Match body background
+$mermaid-label-fg-color: #ffffff; // White text on edge labels
+$mermaid-node-bg-color: rgba(#ffffff, 0.1);
+
+/*-- scss:rules --*/
+
+/* Override CSS custom properties for mermaid in dark mode */
+:root {
+    --mermaid-bg-color: #000000;
+    --mermaid-edge-color: #888888;
+    --mermaid-node-fg-color: #ffffff;
+    --mermaid-fg-color: #ffffff;
+    --mermaid-fg-color--lighter: #cccccc;
+    --mermaid-fg-color--lightest: #999999;
+    --mermaid-font-family: 'Inter', sans-serif;
+    --mermaid-label-bg-color: #000000;
+    --mermaid-label-fg-color: #ffffff;
+    --mermaid-node-bg-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Force edge label background in dark mode */
+.labelBkg {
+    background-color: #000000 !important;
+}
+
+.edgeLabel,
+.edgeLabel p {
+    color: #ffffff !important;
+    background-color: #888888 !important;
+}
+
+/* Center mermaid figure captions */
+.quarto-figure,
+.cell-output-display figure {
+    text-align: center;
+}
+
+figcaption {
+    text-align: center !important;
+}

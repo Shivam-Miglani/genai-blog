@@ -24,3 +24,30 @@ $link-color: #0d6efd;
 
 // Remove border under navbar
 $navbar-border-bottom: none;
+
+$body-color: #1a1a1a;
+$secondary: #666666;
+
+// Mermaid diagram theming (Quarto/Bootswatch variables)
+$mermaid-bg-color: #ffffff;
+$mermaid-edge-color: #666666;
+$mermaid-node-fg-color: #1a1a1a;
+$mermaid-fg-color: #1a1a1a;
+$mermaid-fg-color--lighter: #333333;
+$mermaid-fg-color--lightest: #555555;
+$mermaid-font-family: 'Inter', sans-serif;
+$mermaid-label-bg-color: #ffffff;
+$mermaid-label-fg-color: #000000; // Black text on edge labels
+$mermaid-node-bg-color: rgba(#000000, 0.05);
+
+/*-- scss:rules --*/
+
+/* Center mermaid figure captions */
+.quarto-figure,
+.cell-output-display figure {
+    text-align: center;
+}
+
+figcaption {
+    text-align: center !important;
+}
