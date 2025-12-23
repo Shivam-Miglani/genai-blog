@@ -9,7 +9,7 @@
 <meta name="author" content="Shivam Miglani">
 <meta name="dcterms.date" content="2025-12-22">
 
-<title>Retrieval Augmented Generation Fundamentals – My Context Window</title>
+<title>Retrieval-Augmented Generation (RAG) Fundamentals – My Context Window</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-27763fe0ebea7ce1bbe509daffc54142.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-615b43a3da5462553f9cd31c6449448e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-27763fe0ebea7ce1bbe509daffc54142.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-fd95678463c474cd6f5a155118a273e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-58e9bc82fc556631c43f651f6ce50216.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fd95678463c474cd6f5a155118a273e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,6 +74,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <style>
 #quarto-header nav.navbar > .container-fluid{
   padding-left: .75rem;
@@ -277,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Retrieval Augmented Generation Fundamentals</h1>
+<h1 class="title">Retrieval-Augmented Generation (RAG) Fundamentals</h1>
   <div class="quarto-categories">
     <div class="quarto-category">RAG</div>
   </div>
@@ -319,15 +322,92 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Text and media: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><br>
-Code and snippets: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+<p>Text and media: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> Code and snippets: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
 </div>
 </div>
-<section id="rag-fundamentals" class="level1">
-<h1>RAG Fundamentals</h1>
-<p><strong>R</strong>etrieval <strong>A</strong>ugmented <strong>G</strong>eneration</p>
+<section id="motivation-and-meaning" class="level2">
+<h2 class="anchored" data-anchor-id="motivation-and-meaning">Motivation and Meaning</h2>
+<p><strong>R</strong>etrieval <strong>A</strong>ugmented <strong>G</strong>eneration (RAG) is inference-time context injection: pull <strong>relevant</strong> external data and condition generation on it. This <em>grounds</em> responses in authoritative sources while keeping LLMs parametric knowledge (weights) frozen.</p>
+<section id="motivation" class="level4">
+<h4 class="anchored" data-anchor-id="motivation">Motivation</h4>
+<ul>
+<li><strong>Knowledge limited to training data</strong>: Your proprietary/domain-specific data isn’t there</li>
+<li><strong>Fixed knowledge cut-off date</strong>: The model can’t answer questions about recent events. Without RAG, they will either refuse to answer or <em>hallucinate</em>.</li>
+</ul>
+<section id="alternatives-trade-offs" class="level5">
+<h5 class="anchored" data-anchor-id="alternatives-trade-offs">Alternatives &amp; Trade-offs</h5>
+<ul>
+<li>Why not fine-tune?
+<ul>
+<li>Fine-tuning excels at teaching <em>task formats</em> (SQL generation, JSON output) and <em>reasoning styles</em>, not injecting factual knowledge.</li>
+<li><strong>Catastrophic forgetting</strong>: Updating knowledge degrades performance on other tasks as model weights get overwritten.</li>
+<li><strong>Inefficient</strong>: requires separate fine-tuned checkpoints per domain or use-case or document. It is tricky to learn new knowledge without regressing on old knowledge even with LoRA/QLoRA.</li>
+</ul></li>
+<li>Ok, why not just stuff everything in the context window?
+<ul>
+<li><strong>Recall Degradation</strong>: While 1M+ token models ace “single-needle” tests, performance drops significantly (to ~60-70%) when retrieving multiple distributed facts</li>
+<li><strong>Cost &amp; Latency</strong>: Processing massive contexts is computationally expensive and slow compared to vector search. Retrieval remains necessary for corpora exceeding the window size.</li>
+</ul></li>
+<li>RAG is a reasonable pattern:
+<ul>
+<li>When you need fresh, attributable knowledge with minimal model changes and can tolerate added latency.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="the-rag-pipeline" class="level4">
+<h4 class="anchored" data-anchor-id="the-rag-pipeline">The RAG Pipeline</h4>
+<p>RAG acts as a filter to inject only <em>relevant</em> context. A typical production pipeline looks like this:</p>
+<ol start="0" type="1">
+<li><strong>Ingestion &amp; Indexing</strong>: Chunk documents, generate embeddings, and upsert into a vector database. <em>Note: In production, this is a continuous sync pipeline, not a one-time setup.</em></li>
+<li><strong>Retrieval</strong>: For a user query, search your indexed corpus (vector/keyword) and pull the top‑k relevant chunks, often followed by a <em>re-ranking</em> step for precision.</li>
+<li><strong>Augmented (prompt)</strong>: Inject selected chunks into the system prompt or user message with appropriate metadata (source citations).</li>
+<li><strong>Generation</strong>: The LLM generates an answer conditioned <em>strictly</em> on the provided context, minimizing external knowledge leakage.</li>
+</ol>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-mermaid-ragv1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mermaid-ragv1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-mermaid-ragv1">flowchart TB
+    n2["LLM"] L_n2_n4_0@-- generates grounded answer --&gt; n4["Answer"]
+    n3["Document Corpus"] L_n3_n5_0@&lt;-- ingestion pipeline&lt;br&gt;(chunk + embed) --&gt; n5["Hybrid index&lt;br&gt;(inverted keywords&lt;br&gt;+ &lt;br&gt;vector embeddings)&lt;br&gt;&lt;br&gt;"]
+    n5 L_n5_n6_0@-- "top-k" --&gt; n6["Retrieval &amp;amp; Re-ranking"]
+    n6 L_n6_n7_0@-- "top-k re-ranked chunks + citation metadata" --&gt; n7["Prompt Builder"]
+    n7 L_n7_n2_0@-- "system prompt (use only given context) + user query + &lt;br&gt;top-k re-ranked chunks &amp;amp; citation metadata" --&gt; n2
+    n1["User Query"] L_n1_n8_0@--&gt; n8["Query processing &lt;br&gt;&amp;amp; embedding"]
+    n1 L_n1_n7_0@-- user query --&gt; n7
+    n8 L_n8_n6_0@-- text + query expansions + embeddings --&gt; n6
+
+    n3@{ shape: docs}
+    n5@{ shape: cyl}
+    n6@{ shape: rect}
+    n7@{ shape: rect}
+    n1@{ shape: rect}
+    n8@{ shape: rect}
+
+    L_n2_n4_0@{ animation: slow } 
+    L_n3_n5_0@{ animation: none } 
+    L_n5_n6_0@{ animation: slow } 
+    L_n6_n7_0@{ animation: slow } 
+    L_n7_n2_0@{ animation: slow } 
+    L_n1_n8_0@{ animation: slow } 
+    L_n1_n7_0@{ animation: slow } 
+    L_n8_n6_0@{ animation: slow }
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mermaid-ragv1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: RAG pipeline flowchart showing ingestion pipeline, query processing, retrieval, augmentation and LLM generation.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

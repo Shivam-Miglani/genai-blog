@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "My Context Window",
     "section": "",
-    "text": "Hi, I’m Shivam Miglani. Welcome to my context window. Here I document my journey through the Generative AI landscape, from foundational concepts to production engineering.\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\n\n\n\n\n\nDec 22, 2025\n\n\nRetrieval Augmented Generation Fundamentals\n\n\n\n\n\n\nNo matching items"
+    "text": "Hi, I’m Shivam Miglani. Welcome to my context window. Here I document my journey through the Generative AI landscape, from foundational concepts to production engineering.\n\n\n\n\n\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\n\n\n\n\n\nDec 22, 2025\n\n\nRetrieval-Augmented Generation (RAG) Fundamentals\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "LICENSE.html",
@@ -30,8 +30,15 @@
   {
     "objectID": "posts/rag/rag.html",
     "href": "posts/rag/rag.html",
-    "title": "Retrieval Augmented Generation Fundamentals",
+    "title": "Retrieval-Augmented Generation (RAG) Fundamentals",
     "section": "",
-    "text": "NoteLicensing Notice\n\n\n\nText and media: CC BY 4.0\nCode and snippets: Apache License 2.0\n\n\n\nRAG Fundamentals\nRetrieval Augmented Generation"
+    "text": "NoteLicensing Notice\n\n\n\nText and media: CC BY 4.0 Code and snippets: Apache License 2.0"
+  },
+  {
+    "objectID": "posts/rag/rag.html#motivation-and-meaning",
+    "href": "posts/rag/rag.html#motivation-and-meaning",
+    "title": "Retrieval-Augmented Generation (RAG) Fundamentals",
+    "section": "Motivation and Meaning",
+    "text": "Motivation and Meaning\nRetrieval Augmented Generation (RAG) is inference-time context injection: pull relevant external data and condition generation on it. This grounds responses in authoritative sources while keeping LLMs parametric knowledge (weights) frozen.\n\nMotivation\n\nKnowledge limited to training data: Your proprietary/domain-specific data isn’t there\nFixed knowledge cut-off date: The model can’t answer questions about recent events. Without RAG, they will either refuse to answer or hallucinate.\n\n\nAlternatives & Trade-offs\n\nWhy not fine-tune?\n\nFine-tuning excels at teaching task formats (SQL generation, JSON output) and reasoning styles, not injecting factual knowledge.\nCatastrophic forgetting: Updating knowledge degrades performance on other tasks as model weights get overwritten.\nInefficient: requires separate fine-tuned checkpoints per domain or use-case or document. It is tricky to learn new knowledge without regressing on old knowledge even with LoRA/QLoRA.\n\nOk, why not just stuff everything in the context window?\n\nRecall Degradation: While 1M+ token models ace “single-needle” tests, performance drops significantly (to ~60-70%) when retrieving multiple distributed facts\nCost & Latency: Processing massive contexts is computationally expensive and slow compared to vector search. Retrieval remains necessary for corpora exceeding the window size.\n\nRAG is a reasonable pattern:\n\nWhen you need fresh, attributable knowledge with minimal model changes and can tolerate added latency.\n\n\n\n\n\nThe RAG Pipeline\nRAG acts as a filter to inject only relevant context. A typical production pipeline looks like this:\n\nIngestion & Indexing: Chunk documents, generate embeddings, and upsert into a vector database. Note: In production, this is a continuous sync pipeline, not a one-time setup.\nRetrieval: For a user query, search your indexed corpus (vector/keyword) and pull the top‑k relevant chunks, often followed by a re-ranking step for precision.\nAugmented (prompt): Inject selected chunks into the system prompt or user message with appropriate metadata (source citations).\nGeneration: The LLM generates an answer conditioned strictly on the provided context, minimizing external knowledge leakage.\n\n\n\n\n\n\n\nflowchart TB\n    n2[\"LLM\"] L_n2_n4_0@-- generates grounded answer --&gt; n4[\"Answer\"]\n    n3[\"Document Corpus\"] L_n3_n5_0@&lt;-- ingestion pipeline&lt;br&gt;(chunk + embed) --&gt; n5[\"Hybrid index&lt;br&gt;(inverted keywords&lt;br&gt;+ &lt;br&gt;vector embeddings)&lt;br&gt;&lt;br&gt;\"]\n    n5 L_n5_n6_0@-- \"top-k\" --&gt; n6[\"Retrieval &amp; Re-ranking\"]\n    n6 L_n6_n7_0@-- \"top-k re-ranked chunks + citation metadata\" --&gt; n7[\"Prompt Builder\"]\n    n7 L_n7_n2_0@-- \"system prompt (use only given context) + user query + &lt;br&gt;top-k re-ranked chunks &amp; citation metadata\" --&gt; n2\n    n1[\"User Query\"] L_n1_n8_0@--&gt; n8[\"Query processing &lt;br&gt;&amp; embedding\"]\n    n1 L_n1_n7_0@-- user query --&gt; n7\n    n8 L_n8_n6_0@-- text + query expansions + embeddings --&gt; n6\n\n    n3@{ shape: docs}\n    n5@{ shape: cyl}\n    n6@{ shape: rect}\n    n7@{ shape: rect}\n    n1@{ shape: rect}\n    n8@{ shape: rect}\n\n    L_n2_n4_0@{ animation: slow } \n    L_n3_n5_0@{ animation: none } \n    L_n5_n6_0@{ animation: slow } \n    L_n6_n7_0@{ animation: slow } \n    L_n7_n2_0@{ animation: slow } \n    L_n1_n8_0@{ animation: slow } \n    L_n1_n7_0@{ animation: slow } \n    L_n8_n6_0@{ animation: slow }\n\n\n\n\nFigure 1: RAG pipeline flowchart showing ingestion pipeline, query processing, retrieval, augmentation and LLM generation."
   }
 ]
