@@ -1,5 +1,5 @@
 /*-- scss:defaults --*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 $font-family-sans-serif: 'Inter', sans-serif;
 $font-size-base: 0.95rem;
@@ -12,35 +12,50 @@ $h2-font-size: 1.4rem;
 $h3-font-size: 1.2rem;
 
 // Softer heading colors
-$headings-color: #2c3e50;
+$headings-color: #232323;
 
 // white navbar
 $navbar-bg: #ffffff;
-$navbar-fg: #000000;
+$navbar-fg: #232323;
 
 // Force primary color to black (removes blue from links/buttons)
-$primary: #000000;
+$primary: #232323;
 $link-color: #0d6efd;
 
 // Remove border under navbar
 $navbar-border-bottom: none;
 
-$body-color: #1a1a1a;
+$body-color: #232323;
 $secondary: #666666;
 
 // Mermaid diagram theming (Quarto/Bootswatch variables)
 $mermaid-bg-color: #ffffff;
 $mermaid-edge-color: #666666;
-$mermaid-node-fg-color: #1a1a1a;
-$mermaid-fg-color: #1a1a1a;
+$mermaid-node-fg-color: #232323;
+$mermaid-fg-color: #232323;
 $mermaid-fg-color--lighter: #333333;
 $mermaid-fg-color--lightest: #555555;
 $mermaid-font-family: 'Inter', sans-serif;
 $mermaid-label-bg-color: #ffffff;
-$mermaid-label-fg-color: #000000; // Black text on edge labels
-$mermaid-node-bg-color: rgba(#000000, 0.05);
+$mermaid-label-fg-color: #232323; // Black text on edge labels
+$mermaid-node-bg-color: rgba(#232323, 0.05);
+$mermaid-noteTextColor: #232323;
 
 /*-- scss:rules --*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500 !important;
+}
+
+strong,
+b {
+    font-weight: 500 !important;
+}
 
 /* Center mermaid figure captions */
 .quarto-figure,
