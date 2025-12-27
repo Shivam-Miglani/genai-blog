@@ -2,11 +2,7 @@ import nbformat as nbf
 import glob
 import os
 
-LICENSE_TEXT = """::: {.callout-note appearance="simple"}
-### Licensing Notice
-Text and media: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-Code and snippets: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-:::"""
+LICENSE_TEXT = """>**Licensing Notice**: Text and media: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); Code: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)"""
 
 def inject_license():
     # Targets all notebooks in posts/ and its subdirectories
@@ -17,19 +13,19 @@ def inject_license():
         if not nb.cells:
             continue
 
-        # Check if license already exists in the first two cells to avoid duplicates
-        if any("Licensing Notice" in cell.source for cell in nb.cells[:2]):
+        # Check if license exists and where
+        license_indices = [i for i, cell in enumerate(nb.cells) if "Licensing Notice" in cell.source]
+
+        # If exactly one license and it's at the end, skip
+        if len(license_indices) == 1 and license_indices[0] == len(nb.cells) - 1:
             continue
 
-        # Create the license cell
-        new_cell = nbf.v4.new_markdown_cell(LICENSE_TEXT)
+        # Remove existing license cells (if checks failed above, we need to move/add)
+        nb.cells = [cell for i, cell in enumerate(nb.cells) if i not in license_indices]
 
-        # Logic: If first cell is Quarto YAML (--- title: ... ---), insert as 2nd cell
-        first_cell_src = nb.cells[0].source.strip()
-        if first_cell_src.startswith("---") and first_cell_src.endswith("---"):
-            nb.cells.insert(1, new_cell)
-        else:
-            nb.cells.insert(0, new_cell)
+        # Create and append the license cell
+        new_cell = nbf.v4.new_markdown_cell(LICENSE_TEXT)
+        nb.cells.append(new_cell)
 
         with open(nb_path, 'w', encoding='utf-8') as f:
             nbf.write(nb, f)

@@ -23,7 +23,7 @@ format:
   html:
     theme:
       light: [flatly, light.scss]
-    highlight-style: nord # monokai
+    highlight-style: printing # monokai
     toc: false
     code-copy: true
     code-overflow: wrap
