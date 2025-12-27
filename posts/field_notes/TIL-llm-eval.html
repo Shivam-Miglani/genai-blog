@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-12-26">
 
-<title>My Context Window</title>
+<title>TIL from Stanford CME295 Transformers &amp; LLMs | Lecture 8 - LLM Evaluation – My Context Window</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-3d62d204ba1604a696ce2d8f1e6896bb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-88291b95e529d21522a5315006bb7b73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3d62d204ba1604a696ce2d8f1e6896bb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-88291b95e529d21522a5315006bb7b73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>
 #quarto-header nav.navbar > .container-fluid{
   padding-left: .75rem;
@@ -138,7 +108,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="alternate" type="application/rss+xml" title="My Context Window" href="index.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed fullcontent quarto-light">
 
@@ -147,7 +117,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">My Context Window</span>
     </a>
   </div>
@@ -163,58 +133,217 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">TIL from Stanford CME295 Transformers &amp; LLMs | Lecture 8 - LLM Evaluation</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">LLM Evaluation</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
 
-<p>Hi, I’m Shivam Miglani. Welcome to my context window. Here I document my journey through the Generative AI landscape, from foundational concepts to production engineering.</p>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 26, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Output quality - instruction following - coherence - factuality</p>
+<p>System performance - latency - cost - reliability</p>
+<ul>
+<li>human ratings are gold standard.
+<ul>
+<li>Subjectivity of human ratings -&gt; agreement rate = <span class="math inline">\(p_{o}\)</span> -&gt; o stands for observed
+<ul>
+<li>“How much better is our agreement than what we’d expect just by chance, given how the raters actually use the categories?” “A coefficient of agreement for nominal scales”, Cohen, 1960, “Measuring nominal scale agreement among many raters”, Fleiss, 1971.</li>
+<li>Variants. Cohen’s Kappa, Fleiss’ Kappa, Krippendorff’s alpha</li>
+</ul></li>
+<li>human ratings are slow and expensive</li>
+</ul></li>
+<li>rule-based metrics
+<ul>
+<li>METEOR. Metric for Evaluation of Translation with Explicit ORdering
+<ul>
+<li>write labels once, use as reference</li>
+</ul></li>
+<li>BLEU (BiLingual Evaluation Understudy)</li>
+<li>ROUGE (Recall-Oriented Understudy for Gisting Evaluation)
+<ul>
+<li>Many variants (ROUGE-N, ROUGE-L, etc.) with suite of metrics</li>
+</ul></li>
+<li>Problem with rule-based:
+<ul>
+<li>Does not take into account stylistic variations</li>
+<li>Correlation with human rating is not that great</li>
+<li>still requires human ratings</li>
+</ul></li>
+</ul></li>
+<li>LLM-as-a-Judge
+<ul>
+<li>Use LLM to rate quality of response.</li>
+<li>&lt;prompt, model-response, criteria&gt; -&gt; &lt;score (pass/fail), reason&gt;</li>
+<li>Structured Outputs (in practice)</li>
+<li>Benefit: No need for reference / label; Interpretability via rationales</li>
+<li>Variations: Point-wise or Pair-wise (A or B is better)
+<ul>
+<li>Position A - position bias
+<ul>
+<li>Remedy. “Take the average”, or tweak position embeddings</li>
+</ul></li>
+<li>Verbosity bias
+<ul>
+<li>Remedy. Explicit guidelines, few-shot, and/or penalty on output length</li>
+</ul></li>
+<li>Self-enhancement bias
+<ul>
+<li>Remedy, Don’t use agent as judge</li>
+</ul></li>
+</ul></li>
+<li>Best pracitices
+<ul>
+<li>crisp guidelines</li>
+<li>binary scale over granular ones</li>
+<li>write rationaile before outputting score (autoregressive)</li>
+<li>mitigate biases (position, verbosity, self-enhancement)</li>
+<li>calibrate with human judgements</li>
+<li>low temperature for reproducibility</li>
+</ul></li>
+</ul></li>
+<li>Typical things we want to evaluate for
+<ul>
+<li>task performance
+<ul>
+<li>Usefulness</li>
+<li>Factuality</li>
+<li>Relevance</li>
+</ul></li>
+<li>alignment
+<ul>
+<li>tone</li>
+<li>style</li>
+<li>safety</li>
+</ul></li>
+</ul></li>
+<li>Factuality
+<ul>
+<li>quantify factuality - president roosevelt and teddy example</li>
+<li>decompose into various facts and do weighted average</li>
+</ul></li>
+<li>ReAct
+<ul>
+<li>Tool prediction error
+<ul>
+<li>LLM directly issues reposnse -&gt; tool router error -&gt; retrain tool router</li>
+<li>LLM directly issues response -&gt; tool found but model doesn’t know how to use it -&gt; SFT train model or better adjust prompt associated to target API</li>
+<li>hallucinates tool? -&gt; llm using tool that doesn’t exist -&gt; perhaps model too weak -&gt; upgrade model
+<ul>
+<li>or API naming is not logical -&gt; revamp API</li>
+<li>or instructions are unclear -&gt; revamp top-level instructions</li>
+</ul></li>
+<li>LLM uses wrong tool
+<ul>
+<li>tool router error -&gt; retrain tool router</li>
+<li>model chose wrong tool -&gt; SFT train or better adjust prompt associated to target API</li>
+</ul></li>
+<li>Infers wrong argument:
+<ul>
+<li>argument can’t be inferred -&gt; Introduce a helper tool and/or ensure the context carries the right information</li>
+<li>Model doesn’t know how to use the tool -&gt; SFT train or better adjust prompt associated to target API<br>
+</li>
+</ul></li>
+</ul></li>
+<li>Tool call errors
+<ul>
+<li>wrong response or error returned
+<ul>
+<li>sometimes, errors are legitimitate</li>
+<li>otherwise, fix the tool implementation</li>
+</ul></li>
+<li>no response
+<ul>
+<li>when final response is hallucinated, we often see this</li>
+<li>Return something, even if it’s an empty JSON; in general, return meaningful tool outputs</li>
+</ul></li>
+</ul></li>
+<li>Response generation error: wrong response
+<ul>
+<li>Final response doesn’t convey the tool’s response
+<ul>
+<li>model lacks grounding capabilities - upgrade LLM</li>
+<li>Tool response spams the context window - Trim/summarize information returned by the backend</li>
+<li>Tool response does not convey information meaningfully - Make the tool output format descriptive</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Summary<br>
+- Failures: does not use/hallucinates/uses the wrong tool, infers wrong argument - Failures: wrong response, no response (tool impl.) - Failure: wrong response (generation)</p>
+<p>Modeling - Weak reasoning, grounding capabilities - Too much going on in the context window - Tool modeling isn’t right Tool - Tool itself has a problem - Output of the tool isn’t interpretable</p>
+<p>Common benchmarks - MMLU for knowledge - Massive Multitask Language Understanding - MCQ • Accurately state facts about the world • More “breadth” than “depth” • Reflects pretraining quality</p>
+<ul>
+<li>Reasoning benchmarks
+<ul>
+<li>AIME (American Invitational Mathematics Examination)
+<ul>
+<li>output correct answer on ~30 math problems Geometry, Algebra, Analysis</li>
+</ul></li>
+<li>PIQA (Physical Interaction: Question Answering )
+<ul>
+<li>Characteristics. 2 possible choices per question on everyday situations anchored in Physics. Has approximately 20,000 examples. Evaluation criteria. Find the right choice among Sol1/Sol2.</li>
+</ul></li>
+</ul></li>
+<li>Coding
+<ul>
+<li>SWE bench (SoftWare Engineering benchmark)
+<ul>
+<li>• Generate syntactically correct code • Tests for programming proficiency • Proxy for tool use abilities</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Characteristics. 2,294 software engineering problems from real GitHub issues across 12 popular Python repositories. Each problem has: ● a base commit ● an already merged PR with tests</p>
+<p>Evaluation criteria. Generated PR passes all test cases.</p>
+<ul>
+<li><p>Safety</p></li>
+<li><p>Prevent harmful, toxic, inappropriate behavior • Surfaces vulnerabilities before deployment • Alignment with custom preferences</p></li>
+<li><p>HarmBench (Harmful Behavior Benchmark) Characteristics. 510 unique harmful behaviors (400 text-based, 110 multimodal) split into: ● “Standard” ● “Copyright” ● “Contextual” ● “Multimodal” Criteria: violate laws and widely-held norms Evaluation criteria. Attack success rate (ASR).</p></li>
+<li><p>classifier as output</p></li>
+<li><p>there are both contextual as well as multi-modal behaviors</p></li>
+<li><p>Agents</p>
+<ul>
+<li>𝜏-bench = Tool-Agent-User Interaction Benchmark</li>
+<li>Characteristics. A given set of database schema, APIs and policies across 2 domains: ● Airline agent ○ 500 users, 300 flights, 2000 reservations ○ ~10 tools and 50 tasks ● Retail agent ○ 500 users, 50 products, 1000 orders ○ ~10 tools and 115 tasks Evaluation criteria. Maximize reward and pass^k</li>
+</ul></li>
+<li><p>Pass^k = “Probability that all k attempts succeed”</p></li>
+</ul>
+<p>Role of benchmarks. ● A projection of performance across a given axis ● Different models may be good at different things</p>
+<p>Definition. Pareto curve = set of solutions that “optimizes” a trade-off. https://winston-bosan.github.io/llm-pareto-frontier/</p>
+<p>Possible trade-offs. ● quality vs.&nbsp;cost/latency ● quality vs.&nbsp;safety ● quality vs.&nbsp;context length</p>
 <hr>
+<p>Beware of data contamination Problem. Benchmark’s clues may be contained in the training set</p>
+<p>Precautions. ● Use an identifier such as a hash ● For tools, use a blocklist ● Evaluate on newer test versions!</p>
+<p>Lessons. ● Should not over-index on benchmarks ● Need for ~organic perspectives to complete the picture: Chatbot Arena ● …just try a few models out yourself!</p>
+<blockquote class="blockquote">
+<p><strong>Licensing Notice</strong>: Text and media: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; Code: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+</blockquote>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
-Date
-</th>
-
-<th>
-Title
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-categories="TExNJTIwRXZhbHVhdGlvbg==" data-listing-date-sort="1766707200000" data-listing-file-modified-sort="1766876312573" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1443" data-listing-title-sort="TIL from Stanford CME295 Transformers &amp; LLMs | Lecture 8 - LLM Evaluation" data-listing-filename-sort="TIL-llm-eval.ipynb">
-<td>
-<span class="listing-date">Dec 26, 2025</span>
-</td>
-<td>
-<a href="./posts/field_notes/TIL-llm-eval.html" class="title listing-title">TIL from Stanford CME295 Transformers &amp; LLMs | Lecture 8 - LLM Evaluation</a>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="QWdlbnRpYyUyMExMTXMlMkNSQUc=" data-listing-date-sort="1766707200000" data-listing-file-modified-sort="1766876312573" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="936" data-listing-title-sort="TIL from Stanford CME295 Transformers &amp; LLMs | Lecture 7 - Agentic LLMs" data-listing-filename-sort="TIL-llm-agents.ipynb">
-<td>
-<span class="listing-date">Dec 26, 2025</span>
-</td>
-<td>
-<a href="./posts/field_notes/TIL-llm-agents.html" class="title listing-title">TIL from Stanford CME295 Transformers &amp; LLMs | Lecture 7 - Agentic LLMs</a>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (window.location.pathname.includes("/posts/")) {
@@ -658,7 +787,7 @@ Title
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p><a href="./about.html">About</a> · © 2025 Shivam Miglani</p>
+<p><a href="../../about.html">About</a> · © 2025 Shivam Miglani</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

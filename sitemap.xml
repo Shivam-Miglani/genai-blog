@@ -2,18 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shivam-miglani.github.io/genai-blog/about.html</loc>
-    <lastmod>2025-12-24T19:55:33.126Z</lastmod>
+    <lastmod>2025-12-27T22:58:32.546Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shivam-miglani.github.io/genai-blog/posts/field_notes/TIL-llm-agents.html</loc>
+    <lastmod>2025-12-27T22:58:32.573Z</lastmod>
   </url>
   <url>
     <loc>https://shivam-miglani.github.io/genai-blog/index.html</loc>
-    <lastmod>2025-12-24T19:55:33.153Z</lastmod>
+    <lastmod>2025-12-27T22:58:32.573Z</lastmod>
   </url>
   <url>
     <loc>https://shivam-miglani.github.io/genai-blog/LICENSE.html</loc>
-    <lastmod>2025-12-24T19:55:33.120Z</lastmod>
+    <lastmod>2025-12-27T22:58:32.539Z</lastmod>
   </url>
   <url>
-    <loc>https://shivam-miglani.github.io/genai-blog/posts/rag/rag.html</loc>
-    <lastmod>2025-12-24T19:55:33.155Z</lastmod>
+    <loc>https://shivam-miglani.github.io/genai-blog/posts/field_notes/TIL-llm-eval.html</loc>
+    <lastmod>2025-12-27T22:58:32.573Z</lastmod>
   </url>
 </urlset>

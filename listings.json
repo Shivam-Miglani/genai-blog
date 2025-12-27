@@ -2,7 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/rag/rag.html"
+      "/posts/field_notes/TIL-llm-eval.html",
+      "/posts/field_notes/TIL-llm-agents.html"
     ]
   }
 ]
